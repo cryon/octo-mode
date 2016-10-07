@@ -34,8 +34,6 @@
 ;; TODO:
 
 ;; Test indentation code more - its very messy
-;; Add support for XO-Chip and
-;; Custom face for XO-Chip instructions
 ;; Add :breakpoint <name> statement
 
 ;; User definable variables
@@ -120,11 +118,20 @@
               'words)
   "Regexp matching SuperChip statements")
 
+(defconst octo-xo-chip-statements-regexp
+  (regexp-opt '("long" "plane" "audio" "scroll-up") 'words)
+  "Regexp matching XO-Chip statements")
+
 ;; Custom faces
 
 (defface octo-super-chip-statements-face
   '((t (:inherit font-lock-keyword-face)))
   "Face used to highlight SuperChip statements"
+  :group 'octo)
+
+(defface octo-xo-chip-statements-face
+  '((t (:inherit font-lock-keyword-face)))
+  "Face used to highlight XO-Chip statements"
   :group 'octo)
 
 ;; Mode setup
@@ -162,7 +169,8 @@
     (,octo-control-statements-regexp    . font-lock-keyword-face)
     (,octo-registers-regexp             . font-lock-variable-face)
     (,octo-special-aliases-regexp       . (1 font-lock-preprocessor-face))
-    (,octo-super-chip-statements-regexp . 'octo-super-chip-statements-face))
+    (,octo-super-chip-statements-regexp . 'octo-super-chip-statements-face)
+    (,octo-xo-chip-statements-regexp    . 'octo-xo-chip-statements-face))
   "Expressions to highlight in `octo-mode'")
 
 ;; Indentation
