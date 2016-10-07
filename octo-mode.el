@@ -34,9 +34,6 @@
 ;; TODO:
 
 ;; Test indentation code more - its very messy
-;; Add support for SuperChip
-;; Add custom face for SuperChip instructions deriving
-;;  builtin-face or something...
 ;; Add support for XO-Chip and
 ;; Custom face for XO-Chip instructions
 ;; Add :breakpoint <name> statement
@@ -116,6 +113,20 @@
   ":alias\\s-+\\(compare-temp\\)"
   "Regexp matching Octo special aliases")
 
+(defconst octo-super-chip-statements-regexp
+  (regexp-opt '("hires" "lores" "scroll-down" "scroll-left"
+                "scroll-right" "bighex" "exit" "saveflags"
+                "loadflags")
+              'words)
+  "Regexp matching SuperChip statements")
+
+;; Custom faces
+
+(defface octo-super-chip-statements-face
+  '((t (:inherit font-lock-keyword-face)))
+  "Face used to highlight SuperChip statements"
+  :group 'octo)
+
 ;; Mode setup
 
 (defvar octo-mode-syntax-table nil
@@ -141,16 +152,17 @@
 ;; Font-lock support
 
 (defvar octo-highlights
-  `((,octo-label-regexp              . (1 font-lock-function-name-face))
-    (,octo-constant-name-regexp      . (1 font-lock-constant-face))
-    (,octo-directives-regexp         . (1 font-lock-preprocessor-face))
-    (,octo-statements-regexp         . font-lock-keyword-face)
-    (,octo-assignments-regexp        . font-lock-constant-face)
-    (,octo-conditionals-regexp       . font-lock-builtin-face)
-    (,octo-psuedo-ops-regexp         . font-lock-keyword-face)
-    (,octo-control-statements-regexp . font-lock-keyword-face)
-    (,octo-registers-regexp          . font-lock-variable-face)
-    (,octo-special-aliases-regexp    . (1 font-lock-preprocessor-face)))
+  `((,octo-label-regexp                 . (1 font-lock-function-name-face))
+    (,octo-constant-name-regexp         . (1 font-lock-constant-face))
+    (,octo-directives-regexp            . (1 font-lock-preprocessor-face))
+    (,octo-statements-regexp            . font-lock-keyword-face)
+    (,octo-assignments-regexp           . font-lock-constant-face)
+    (,octo-conditionals-regexp          . font-lock-builtin-face)
+    (,octo-psuedo-ops-regexp            . font-lock-keyword-face)
+    (,octo-control-statements-regexp    . font-lock-keyword-face)
+    (,octo-registers-regexp             . font-lock-variable-face)
+    (,octo-special-aliases-regexp       . (1 font-lock-preprocessor-face))
+    (,octo-super-chip-statements-regexp . 'octo-super-chip-statements-face))
   "Expressions to highlight in `octo-mode'")
 
 ;; Indentation
