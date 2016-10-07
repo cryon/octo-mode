@@ -56,7 +56,6 @@
 
 ;; TODO:
 
-;; Test indentation code more - its very messy
 ;; Add :breakpoint <name> statement
 
 ;; User definable variables
