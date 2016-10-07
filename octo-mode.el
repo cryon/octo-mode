@@ -94,7 +94,8 @@
   "Regexp maching name of Octo constant")
 
 (defconst octo-directives-regexp
-  (regexp-opt '(":" ":const" ":alias" ":unpack" ":next" ":org") 'words)
+  (regexp-opt '(":" ":const" ":alias" ":unpack" ":next" ":org" ":breakpoint")
+              'words)
   "Regexp maching Octo directives")
 
 (defconst octo-statements-regexp
@@ -132,6 +133,10 @@
 (defconst octo-special-aliases-regexp
   ":alias\\s-+\\(compare-temp\\)"
   "Regexp matching Octo special aliases")
+
+(defconst octo-breakpoint-name-regexp
+  ":breakpoint\\s-+\\(\\sw+\\)"
+  "Regexp matching Octo breakpoint name")
 
 (defconst octo-super-chip-statements-regexp
   (regexp-opt '("hires" "lores" "scroll-down" "scroll-left"
@@ -192,7 +197,8 @@
     (,octo-registers-regexp             . font-lock-variable-face)
     (,octo-special-aliases-regexp       . (1 font-lock-preprocessor-face))
     (,octo-super-chip-statements-regexp . 'octo-super-chip-statements-face)
-    (,octo-xo-chip-statements-regexp    . 'octo-xo-chip-statements-face))
+    (,octo-xo-chip-statements-regexp    . 'octo-xo-chip-statements-face)
+    (,octo-breakpoint-name-regexp       . (1 font-lock-function-name-face)))
   "Expressions to highlight in `octo-mode'")
 
 ;; Indentation
