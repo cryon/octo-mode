@@ -81,9 +81,6 @@
 
 ;; Constants
 
-(defconst octo-mode-version "0.1.0"
-  "Version of `octo-mode.'")
-
 (defconst octo-label-regexp
   ":\\s-+\\(\\sw+\\)"
   "Regexp matching Octo labels")
