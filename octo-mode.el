@@ -1,4 +1,3 @@
-
 ;;; octo-mode.el --- Major mode for Octo assembly language
 
 ;; Copyright (C) 2016 John Olsson
