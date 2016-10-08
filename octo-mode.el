@@ -54,10 +54,6 @@
 
 ;;; Code:
 
-;; TODO:
-
-;; Add :breakpoint <name> statement
-
 ;; User definable variables
 
 (defgroup octo nil
