@@ -8,7 +8,7 @@
 ;; URL: https://github.com/cryon/octo-mode
 ;; Created: 4th October 2016
 ;; Version: 0.1.0
-;; Keywords: language octo
+;; Keywords: languages
 
 ;; This file is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published
