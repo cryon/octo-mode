@@ -8,6 +8,8 @@ More information about the language can be found
 
 ## Installation
 
+[![MELPA](https://melpa.org/packages/octo-mode-badge.svg)](https://melpa.org/#/octo-mode)
+
 The easiest way to install octo-mode is from melpa.  Assuming MELPA is added to
 your archive list you can list the available packages by typing <code>M-x
 list-packages</code>, look for <code>octo-mode</code>, mark it for installation
