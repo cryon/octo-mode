@@ -249,7 +249,7 @@
          octo-indentation-hint-search-lines))))))
 
 ;;;###autoload
-(define-derived-mode octo-mode fundamental-mode "Octo"
+(define-derived-mode octo-mode prog-mode "Octo"
   "Major mode for editing Octo assembly language.
 
 \\{octo-mode-map}"
