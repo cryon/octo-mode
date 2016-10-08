@@ -36,7 +36,7 @@
 ;; quite compact anyways.
 ;;
 ;; Much inspiration was taken from yaml-mode so there might be
-;; similarities in the source structure and naming choises.
+;; similarities in the source structure and naming choices.
 
 ;;; Installation:
 
