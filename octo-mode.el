@@ -205,9 +205,12 @@
 ;; Indentation
 
 (defun octo--previous-line-indentation ()
-  "Indentation of previos line"
+  "Indentation of previous non-empty line"
   (save-excursion
+    (beginning-of-line)
     (forward-line -1)
+    (while (and (looking-at "\\s-*$") (not (bobp)))
+      (forward-line -1))
     (current-indentation)))
 
 (defun octo--backwards-indentation-hint (max-iter)
