@@ -7,6 +7,7 @@
 ;; URL: https://github.com/cryon/octo-mode
 ;; Created: 4th October 2016
 ;; Version: 0.1.0
+;; Package-Requires: ((emacs "24"))
 ;; Keywords: languages
 
 ;; This file is free software: you can redistribute it and/or modify
