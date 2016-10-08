@@ -93,11 +93,13 @@
 
 (defconst octo-statements-regexp
   (regexp-opt '("clear" "bcd" "save" "load" "sprite" "jump"
-                "jump0" "return" "delay" "buzzer" ";") 'words)
+                "jump0" "return" "delay" "buzzer" ";")
+              'words)
   "Regexp matching Octo statements")
 
 (defconst octo-assignments-regexp
-  (regexp-opt '(":=" "+=" "-=" "|=" "&=" "^=" ">>=" "<<=") 'symbols)
+  (regexp-opt '(":=" "+=" "-=" "|=" "&=" "^=" ">>=" "<<=")
+              'symbols)
   "Regexp maching Octo assignments")
 
 (defconst octo-conditionals-regexp
@@ -112,7 +114,8 @@
   "Regexp matching Octo psuedo ops")
 
 (defconst octo-control-statements-regexp
-  (regexp-opt '("if" "then" "else" "begin" "end" "loop" "again" "while") 'words)
+  (regexp-opt '("if" "then" "else" "begin" "end" "loop" "again" "while")
+              'words)
   "Regexp matching Octo control statements")
 
 (defconst octo-registers-regexp
@@ -120,7 +123,8 @@
                 "v4" "v5" "v6" "v7"
                 "v8" "v9" "va" "vb"
                 "vc" "vd" "ve" "vf"
-                "i") 'words)
+                "i")
+              'words)
   "Regexp matching Octo registers")
 
 (defconst octo-special-aliases-regexp
@@ -233,16 +237,16 @@
   (interactive)
   (beginning-of-line)
   (indent-line-to
-   (max
-    0
-    (if (or (bobp)(looking-at (concat "\\s-*" octo-label-regexp)))
-        0
-      (if (or (looking-at octo-block-end-regexp)
-              ;; special special else
-              (looking-at "\\s-*else"))
-          (- (octo-previous-line-indentation) octo-indent-offset)
-        (octo-backwards-indentation-hint
-         octo-indentation-hint-search-lines))))))
+   (let ((unindented-label (concat "\\s-*" octo-label-regexp))
+         (unindented-else "\\s-*else"))
+     (max 0
+          (if (or (bobp) (looking-at unindented-label)) 0
+            (if (or
+                 (looking-at octo-block-end-regexp)
+                 (looking-at unindented-else))
+                (- (octo-previous-line-indentation) octo-indent-offset)
+              (octo-backwards-indentation-hint
+               octo-indentation-hint-search-lines)))))))
 
 ;;;###autoload
 (define-derived-mode octo-mode prog-mode "Octo"
