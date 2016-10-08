@@ -182,11 +182,7 @@
   (modify-syntax-entry ?:  "w" octo-mode-syntax-table)
   (modify-syntax-entry ?-  "w" octo-mode-syntax-table)
   (modify-syntax-entry ?_  "w" octo-mode-syntax-table)
-  (modify-syntax-entry ?\; "w" octo-mode-syntax-table)
-
-  ;; Tabs and spaces are whitespaces
-  (modify-syntax-entry ?\t  "-" octo-mode-syntax-table)
-  (modify-syntax-entry ?\   "-" octo-mode-syntax-table))
+  (modify-syntax-entry ?\; "w" octo-mode-syntax-table))
 
 ;; Font-lock support
 
