@@ -142,6 +142,14 @@
   (regexp-opt '("long" "plane" "audio" "scroll-up") 'words)
   "Regexp matching XO-Chip statements")
 
+(defconst octo-block-start-regexp
+  "\\s-*\\(\\(:\\s-+\\sw*\\>\\)\\|loop\\|else\\|\\(.*begin\\s-*$\\)\\)"
+  "Regexp matching block start")
+
+(defconst octo-block-end-regexp
+  "\\s-*\\(again\\|end\\)"
+  "Regexp matching block end")
+
 ;; Custom faces
 
 (defface octo-super-chip-statements-face
@@ -201,14 +209,6 @@
   (save-excursion
     (forward-line -1)
     (current-indentation)))
-
-(defconst octo-block-start-regexp
-  "\\s-*\\(\\(:\\s-+\\sw*\\>\\)\\|loop\\|else\\|\\(.*begin\\s-*$\\)\\)"
-  "Regexp matching block start")
-
-(defconst octo-block-end-regexp
-  "\\s-*\\(again\\|end\\)"
-  "Regexp matching block end")
 
 (defun octo-backwards-indentation-hint (max-iter)
   "Returns indentation hint based on previous `max-iter' lines"
