@@ -204,12 +204,17 @@
 
 ;; Indentation
 
+(defun octo--current-line-empty-p ()
+  "Checks whether the current line is empty or not"
+  (save-excursion
+    (beginning-of-line)
+    (looking-at "\\s-*$")))
+
 (defun octo--previous-line-indentation ()
   "Indentation of previous non-empty line"
   (save-excursion
-    (beginning-of-line)
     (forward-line -1)
-    (while (and (looking-at "\\s-*$") (not (bobp)))
+    (while (and (octo--current-line-empty-p) (not (bobp)))
       (forward-line -1))
     (current-indentation)))
 
@@ -234,18 +239,19 @@
 (defun octo-indent-line ()
   "Indent current line as Octo code"
   (interactive)
-  (beginning-of-line)
-  (indent-line-to
-   (let ((unindented-label (concat "\\s-*" octo-label-regexp))
-         (unindented-else "\\s-*else"))
-     (max 0
-          (if (or (bobp) (looking-at unindented-label)) 0
-            (if (or
-                 (looking-at octo-block-end-regexp)
-                 (looking-at unindented-else))
-                (- (octo--previous-line-indentation) octo-indent-offset)
-              (octo--backwards-indentation-hint
-               octo-indentation-hint-search-lines)))))))
+  (unless (octo--current-line-empty-p)
+    (beginning-of-line)
+    (indent-line-to
+     (let ((unindented-label (concat "\\s-*" octo-label-regexp))
+           (unindented-else "\\s-*else"))
+       (max 0
+            (if (or (bobp) (looking-at unindented-label)) 0
+              (if (or
+                   (looking-at octo-block-end-regexp)
+                   (looking-at unindented-else))
+                  (- (octo--previous-line-indentation) octo-indent-offset)
+                (octo--backwards-indentation-hint
+                 octo-indentation-hint-search-lines))))))))
 
 ;;;###autoload
 (define-derived-mode octo-mode prog-mode "Octo"
