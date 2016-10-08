@@ -239,19 +239,20 @@
 (defun octo-indent-line ()
   "Indent current line as Octo code"
   (interactive)
-  (unless (octo--current-line-empty-p)
-    (beginning-of-line)
-    (indent-line-to
-     (let ((unindented-label (concat "\\s-*" octo-label-regexp))
-           (unindented-else "\\s-*else"))
-       (max 0
-            (if (or (bobp) (looking-at unindented-label)) 0
-              (if (or
-                   (looking-at octo-block-end-regexp)
-                   (looking-at unindented-else))
-                  (- (octo--previous-line-indentation) octo-indent-offset)
-                (octo--backwards-indentation-hint
-                 octo-indentation-hint-search-lines))))))))
+  (save-excursion
+    (unless (octo--current-line-empty-p)
+      (beginning-of-line)
+      (indent-line-to
+       (let ((unindented-label (concat "\\s-*" octo-label-regexp))
+             (unindented-else "\\s-*else"))
+         (max 0
+              (if (or (bobp) (looking-at unindented-label)) 0
+                (if (or
+                     (looking-at octo-block-end-regexp)
+                     (looking-at unindented-else))
+                    (- (octo--previous-line-indentation) octo-indent-offset)
+                  (octo--backwards-indentation-hint
+                   octo-indentation-hint-search-lines)))))))))
 
 ;;;###autoload
 (define-derived-mode octo-mode prog-mode "Octo"
