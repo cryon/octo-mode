@@ -204,13 +204,13 @@
 
 ;; Indentation
 
-(defun octo-previous-line-indentation ()
+(defun octo--previous-line-indentation ()
   "Indentation of previos line"
   (save-excursion
     (forward-line -1)
     (current-indentation)))
 
-(defun octo-backwards-indentation-hint (max-iter)
+(defun octo--backwards-indentation-hint (max-iter)
   "Returns indentation hint based on previous `max-iter' lines"
   (save-excursion
     (let ((iter octo-indentation-hint-search-lines)
@@ -240,8 +240,8 @@
             (if (or
                  (looking-at octo-block-end-regexp)
                  (looking-at unindented-else))
-                (- (octo-previous-line-indentation) octo-indent-offset)
-              (octo-backwards-indentation-hint
+                (- (octo--previous-line-indentation) octo-indent-offset)
+              (octo--backwards-indentation-hint
                octo-indentation-hint-search-lines)))))))
 
 ;;;###autoload
