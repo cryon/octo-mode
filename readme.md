@@ -17,7 +17,7 @@ by typing <code>i</code> and then execute (install) by typing <code>x</code>. Or
 install it directly with <code>M-x package-install RET octo-mode</code>.
 
 If you want to install it manually, just drop this file anywhere in your
-<code>load-path</code>. Be default octo-mode associates itself with the
+<code>load-path</code>. By default octo-mode associates itself with the
 <code>*.8o</code> file ending. You can enable the mode manually by <code>M-x
 octo-mode RET</code>.
 
@@ -26,7 +26,7 @@ octo-mode RET</code>.
 Please report any issues you find with the mode and feel free to send me
 pull-requests with improvements!
 
-If you send a merge-request please make sure that your commits contains exacly
+If you send a merge-request please make sure that your commits contains exactly
 what you indent them to. Refrain from doing more than one logical change in each
 commit and rebase your branch on this repository's master branch to avoid
 interleaved commits from different branches.
