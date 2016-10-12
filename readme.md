@@ -3,6 +3,8 @@
 Major mode for Octo; a high level assembly language for the
 [Chip8](http://mattmik.com/files/chip8/mastering/chip8.html) virtual machine.
 
+Currently the mode provides syntax highlighting and indentation rules.
+
 More information about the language can be found
 [here](https://github.com/JohnEarnest/Octo).
 
